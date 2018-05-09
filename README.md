@@ -2,7 +2,7 @@
 
 Examples:
 
-```python
+```js
 const API = require('RexTesterApiWrapper');
 const Rex = new API();
 let Code = 'from os import sys; from sys import platfrom; print platform';
