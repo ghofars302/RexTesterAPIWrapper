@@ -1,0 +1,25 @@
+{
+  "name": "rextesterapiwrapper",
+  "version": "0.0.1",
+  "description": "An api wrapper for rextester in node.js for easy use.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "peerDependencies": {
+    "node-fetch": "^2.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghofars302/RexTesterAPIWrappper.git"
+  },
+  "keywords": [
+    "rextester"
+  ],
+  "author": "ghofars302",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/ghofars302/RexTesterAPIWrappper/issues"
+  },
+  "homepage": "https://github.com/ghofars302/RexTesterAPIWrappper#readme"
+}
