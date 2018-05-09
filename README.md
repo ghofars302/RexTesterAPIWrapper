@@ -1,5 +1,13 @@
 # RexTesterAPIWrappper
 
+Install:
+
+Note: currently this module not support global install.
+
+```xl
+npm i https://github.com/ghofars302/RexTesterAPIWrappper
+```
+
 Examples:
 
 ```js
