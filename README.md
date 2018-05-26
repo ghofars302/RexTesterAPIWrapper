@@ -1,4 +1,4 @@
-# RexTesterAPIWrappper
+# RexTesterAPIWrapper
 
 Install:
 
