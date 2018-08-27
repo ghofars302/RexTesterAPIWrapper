@@ -6,24 +6,26 @@
 
 const {URL} = require('url');
 const fetch = require('node-fetch');
-const api = require('./RexEndpoints.json');
+const api = require('./api.json');
 
-class RexTester {
-    constructor() {
-        let self = this;
-        let baseURL = 'http://rextester.com/rundotnet/api?';
-        Object.keys(api).forEach(async (endpoints) => {
-            self[`${endpoints}`] = async function (code) {
-                let encoded = encodeURIComponent(code);
-                let url = new URL(`${baseURL}LanguageChoice=${api[endpoints]}&Program=${encoded}`);
-                let raw = await fetch(url, {
-                    method: 'POST'
-                });
-
-                return raw;
+module.exports = function RexTester(code, options) {
+    if (!RexTester.Promise) {
+        throw new Error('Native promise is missing, you can set it by do RexTester.Promise = (Your Promise)');
+    }
+    
+    if (!options) options = { language: 'nodejs' };
+    
+    return new RexTester.Promise(async (resolve, reject) => {
+        const body = await fetch('http://rextester.com/rundotnet/api', {
+            "method": "POST",
+            "qs": {
+                "LanguageChoice": api.includes(options.language.toLowerCase()) ? api[options.language.toLowerCase()] : null;
+                "Program": typeof code === 'string' || code.length > 0 ? code : '';
             }
-        })
-    } 
-}
-
-module.exports = RexTester;
+        });
+        
+        const json = await body.json();
+        
+        return 
+    })
+}  
