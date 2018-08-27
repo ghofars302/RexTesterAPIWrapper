@@ -4,7 +4,6 @@
 * Node-fetch require for this module.
 */
 
-const {URL} = require('url');
 const fetch = require('node-fetch');
 const api = require('./api.json');
 
@@ -26,11 +25,16 @@ const RexTester = function (code, options) {
     if (options.args) fetchOptions.qs['CompilerArgs'] = options.args
     
     return new RexTester.Promise(async (resolve, reject) => {
-        const body = await fetch('http://rextester.com/rundotnet/api', fetchOptions);
+        let body;
+        try {
+            body = await fetch('http://rextester.com/rundotnet/api', fetchOptions);
+        } catch (error) {
+            reject(error)
+        }
         
         const json = await body.json();
         
-        return { status: json.Errors ? "error" : "ok", result: json.Errors ? json.Errors : json.Result };
+        resolve({ status: json.Errors ? "error" : "ok", result: json.Errors ? json.Errors : json.Result })
     })
 }
 
