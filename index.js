@@ -17,7 +17,7 @@ const RexTester = function (code, options) {
     const fetchOptions = {
         "method": "POST",
         "qs": {
-            "LanguageChoice": api.includes(options.language.toLowerCase()) ? api[options.language.toLowerCase()] : null,
+            "LanguageChoice": Object.keys(api).includes(options.language.toLowerCase()) ? api[options.language.toLowerCase()] : null,
             "Program": typeof code === 'string' || code.length > 0 ? code : ''
         }
     }
